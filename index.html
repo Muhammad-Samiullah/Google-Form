@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Activity 4</title>
+    <script
+      src="https://kit.fontawesome.com/6644f3bee6.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .container {
+        width: 50%;
+        margin: auto;
+        background-color: #d2d2d2;
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid darkgrey;
+        margin-top: 40px;
+      }
+      table {
+        width: 100%;
+        background-color: white;
+      }
+      td {
+        width: 50%;
+      }
+      table,
+      td {
+        border: 2px solid darkgrey;
+        border-collapse: collapse;
+      }
+      td {
+        padding: 5px;
+      }
+      .info {
+        color: #2019ff;
+      }
+      .info h1 {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 17px;
+        letter-spacing: 0px;
+        font-weight: 900;
+        margin: 0;
+      }
+      .heading {
+        color: #088208;
+        text-align: center;
+        margin: 10px;
+        margin-top: 0;
+      }
+      #name,
+      #fname {
+        text-transform: uppercase;
+      }
+
+      button {
+        background-color: #088208;
+        color: white;
+        padding: 15px 25px;
+        cursor: pointer;
+        border: 0;
+      }
+      button:hover {
+        color: #088208;
+        background-color: white;
+        border: 1px solid #088208;
+        transition: 0.5s ease;
+      }
+      .newData {
+        width: 50%;
+        margin: auto;
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 50px;
+      }
+      @media (max-width: 650px) {
+        .container {
+          width: 90%;
+          margin: auto;
+        }
+        .newData {
+          flex-direction: column;
+        }
+        button {
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">
+        <i class="fab fa-canadian-maple-leaf"></i>
+        <i class="fab fa-canadian-maple-leaf"></i> Result Sheet
+        <i class="fab fa-canadian-maple-leaf"></i>
+        <i class="fab fa-canadian-maple-leaf"></i>
+      </h1>
+      <table>
+        <tr>
+          <td class="info">
+            <h1>Student Name:</h1>
+          </td>
+          <td id="name"></td>
+        </tr>
+        <tr>
+          <td class="info"><h1>Father Name:</h1></td>
+          <td id="fname"></td>
+        </tr>
+        <tr>
+          <td class="info"><h1>Roll No:</h1></td>
+          <td id="roll"></td>
+        </tr>
+        <tr>
+          <td class="info"><h1>Obtained Marks:</h1></td>
+          <td id="marks"></td>
+        </tr>
+        <tr>
+          <td class="info"><h1>Grade:</h1></td>
+          <td id="grade"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="newData">
+      <button onclick="getMarks()">Enter New Marks?</button>
+      <button onclick="getInput()">Enter New Data?</button>
+    </div>
+
+    <script>
+      var studentName, fatherName, rollNumber, obtainMarks, grade;
+      var nameCell = document.getElementById("name");
+      var fatherNameCell = document.getElementById("fname");
+      var rollCell = document.getElementById("roll");
+      var marksCell = document.getElementById("marks");
+      var gradeCell = document.getElementById("grade");
+      function getInput() {
+        studentName = prompt("Enter Student Name");
+        fatherName = prompt("Enter Student's Father Name");
+        rollNumber = prompt("Enter Student's Roll Number");
+        obtainMarks = prompt("Enter Student's Obtained Marks");
+        calculateGrade();
+        putValues();
+      }
+
+      function calculateGrade() {
+        if (obtainMarks >= 91 && obtainMarks <= 100) {
+          grade = "A+";
+        } else if (obtainMarks >= 76 && obtainMarks <= 90) {
+          grade = "A";
+        } else if (obtainMarks >= 71 && obtainMarks <= 75) {
+          grade = "A-";
+        } else if (obtainMarks >= 68 && obtainMarks <= 70) {
+          grade = "B+";
+        } else if (obtainMarks >= 63 && obtainMarks <= 67) {
+          grade = "B";
+        } else if (obtainMarks >= 61 && obtainMarks <= 62) {
+          grade = "B-";
+        } else if (obtainMarks >= 59 && obtainMarks <= 60) {
+          grade = "C+";
+        } else if (obtainMarks >= 56 && obtainMarks <= 58) {
+          grade = "C";
+        } else if (obtainMarks >= 52 && obtainMarks <= 55) {
+          grade = "C-";
+        } else if (obtainMarks >= 49 && obtainMarks <= 51) {
+          grade = "D";
+        } else if (obtainMarks >= 0 && obtainMarks <= 48) {
+          grade = "F";
+        } else {
+          alert(
+            "You have entered wrong Marks! Marks must be between 0 and 100!"
+          );
+          obtainMarks = prompt("Enter Marks Again!");
+          calculateGrade();
+          putValues();
+        }
+      }
+
+      function putValues() {
+        nameCell.innerHTML = studentName;
+        fatherNameCell.innerHTML = fatherName;
+        rollCell.innerHTML = rollNumber;
+        marksCell.innerHTML = obtainMarks;
+        gradeCell.innerHTML = grade;
+      }
+
+      function getMarks() {
+        obtainMarks = prompt("Enter Student's Marks!");
+        calculateGrade();
+        putValues();
+      }
+
+      getInput();
+    </script>
+  </body>
+</html>
