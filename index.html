@@ -170,6 +170,10 @@
           default:
             alert("Wrong Option Selected!");
             calculateResult();
+            if (!result) {
+              alert("Invalid Inputs! Cannot Compute Result!");
+              start();
+            }
             putValues();
             break;
         }
@@ -177,6 +181,10 @@
 
       function start() {
         calculateResult();
+        if (!result) {
+          alert("Invalid Inputs! Cannot Compute Result!");
+          start();
+        }
         putValues();
       }
       start();
