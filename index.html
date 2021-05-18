@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Activity 4</title>
+    <title>JavaScript Activity 5</title>
     <script
       src="https://kit.fontawesome.com/6644f3bee6.js"
       crossorigin="anonymous"
@@ -60,12 +60,11 @@
         color: white;
         padding: 15px 25px;
         cursor: pointer;
-        border: 0;
+        border: 1px solid #088208;
       }
       button:hover {
         color: #088208;
         background-color: white;
-        border: 1px solid #088208;
         transition: 0.5s ease;
       }
       .newData {
@@ -86,6 +85,9 @@
         button {
           margin-bottom: 20px;
         }
+        .heading {
+          font-size: 25px;
+        }
       }
     </style>
   </head>
@@ -93,104 +95,91 @@
     <div class="container">
       <h1 class="heading">
         <i class="fab fa-canadian-maple-leaf"></i>
-        <i class="fab fa-canadian-maple-leaf"></i> Result Sheet
+        <i class="fab fa-canadian-maple-leaf"></i> Calculator
         <i class="fab fa-canadian-maple-leaf"></i>
         <i class="fab fa-canadian-maple-leaf"></i>
       </h1>
       <table>
         <tr>
           <td class="info">
-            <h1>Student Name:</h1>
+            <h1>Operation:</h1>
           </td>
-          <td id="name"></td>
+          <td id="operator"></td>
         </tr>
         <tr>
-          <td class="info"><h1>Father Name:</h1></td>
-          <td id="fname"></td>
+          <td class="info"><h1>First Digit:</h1></td>
+          <td id="fdigit"></td>
         </tr>
         <tr>
-          <td class="info"><h1>Roll No:</h1></td>
-          <td id="roll"></td>
+          <td class="info"><h1>Second Digit:</h1></td>
+          <td id="sdigit"></td>
         </tr>
         <tr>
-          <td class="info"><h1>Obtained Marks:</h1></td>
-          <td id="marks"></td>
-        </tr>
-        <tr>
-          <td class="info"><h1>Grade:</h1></td>
-          <td id="grade"></td>
+          <td class="info"><h1>Result:</h1></td>
+          <td id="result"></td>
         </tr>
       </table>
     </div>
     <div class="newData">
-      <button onclick="getMarks()">Enter New Marks?</button>
-      <button onclick="getInput()">Enter New Data?</button>
+      <button onclick="start()">New Calculation?</button>
     </div>
 
     <script>
-      var studentName, fatherName, rollNumber, obtainMarks, grade;
-      var nameCell = document.getElementById("name");
-      var fatherNameCell = document.getElementById("fname");
-      var rollCell = document.getElementById("roll");
-      var marksCell = document.getElementById("marks");
-      var gradeCell = document.getElementById("grade");
-      function getInput() {
-        studentName = prompt("Enter Student Name");
-        fatherName = prompt("Enter Student's Father Name");
-        rollNumber = prompt("Enter Student's Roll Number");
-        obtainMarks = prompt("Enter Student's Obtained Marks");
-        calculateGrade();
-        putValues();
-      }
+      var option, firstDigit, secondDigit, result, output, operator;
 
-      function calculateGrade() {
-        if (obtainMarks >= 91 && obtainMarks <= 100) {
-          grade = "A+";
-        } else if (obtainMarks >= 76 && obtainMarks <= 90) {
-          grade = "A";
-        } else if (obtainMarks >= 71 && obtainMarks <= 75) {
-          grade = "A-";
-        } else if (obtainMarks >= 68 && obtainMarks <= 70) {
-          grade = "B+";
-        } else if (obtainMarks >= 63 && obtainMarks <= 67) {
-          grade = "B";
-        } else if (obtainMarks >= 61 && obtainMarks <= 62) {
-          grade = "B-";
-        } else if (obtainMarks >= 59 && obtainMarks <= 60) {
-          grade = "C+";
-        } else if (obtainMarks >= 56 && obtainMarks <= 58) {
-          grade = "C";
-        } else if (obtainMarks >= 52 && obtainMarks <= 55) {
-          grade = "C-";
-        } else if (obtainMarks >= 49 && obtainMarks <= 51) {
-          grade = "D";
-        } else if (obtainMarks >= 0 && obtainMarks <= 48) {
-          grade = "F";
-        } else {
-          alert(
-            "You have entered wrong Marks! Marks must be between 0 and 100!"
-          );
-          obtainMarks = prompt("Enter Marks Again!");
-          calculateGrade();
-          putValues();
-        }
+      function getInput() {
+        firstDigit = parseInt(prompt("Enter First Digit!"));
+        secondDigit = parseInt(prompt("Enter Second Digit!"));
       }
 
       function putValues() {
-        nameCell.innerHTML = studentName;
-        fatherNameCell.innerHTML = fatherName;
-        rollCell.innerHTML = rollNumber;
-        marksCell.innerHTML = obtainMarks;
-        gradeCell.innerHTML = grade;
+        document.getElementById("operator").innerHTML = operator;
+        document.getElementById("fdigit").innerHTML = firstDigit;
+        document.getElementById("sdigit").innerHTML = secondDigit;
+        document.getElementById("result").innerHTML = result;
       }
 
-      function getMarks() {
-        obtainMarks = prompt("Enter Student's Marks!");
-        calculateGrade();
+      function calculateResult() {
+        option = prompt(
+          "Enter 1 for Addition, 2 for Subtraction, 3 for Multiplication, 4 for Division"
+        );
+        switch (option) {
+          case "1":
+            getInput();
+            operator = "Addition";
+            result = firstDigit + secondDigit;
+            break;
+          case "2":
+            getInput();
+            operator = "Subtration";
+            result = firstDigit - secondDigit;
+            output = `The Difference of ${firstDigit} and ${secondDigit} is ${result}.`;
+            break;
+          case "3":
+            getInput();
+            operator = "Multiplication";
+            result = firstDigit * secondDigit;
+            output = `The Multiplication of ${firstDigit} and ${secondDigit} is ${result}.`;
+            break;
+          case "4":
+            getInput();
+            operator = "Division";
+            result = firstDigit / secondDigit;
+            output = `The Division of ${firstDigit} and ${secondDigit} is ${result}.`;
+            break;
+          default:
+            alert("Wrong Option Selected!");
+            calculateResult();
+            putValues();
+            break;
+        }
+      }
+
+      function start() {
+        calculateResult();
         putValues();
       }
-
-      getInput();
+      start();
     </script>
   </body>
 </html>
