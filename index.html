@@ -4,190 +4,251 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Activity 5</title>
-    <script
-      src="https://kit.fontawesome.com/6644f3bee6.js"
-      crossorigin="anonymous"
-    ></script>
+    <title>JavaScript Activity 6</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
       .container {
-        width: 50%;
+        width: 70%;
         margin: auto;
-        background-color: #d2d2d2;
-        padding: 10px;
-        border-radius: 5px;
-        border: 2px solid darkgrey;
-        margin-top: 40px;
       }
-      table {
-        width: 100%;
-        background-color: white;
-      }
-      td {
-        width: 50%;
-      }
-      table,
-      td {
-        border: 2px solid darkgrey;
-        border-collapse: collapse;
-      }
-      td {
-        padding: 5px;
-      }
-      .info {
-        color: #2019ff;
-      }
-      .info h1 {
-        font-family: Verdana, Arial, Helvetica, sans-serif;
-        font-size: 17px;
-        letter-spacing: 0px;
-        font-weight: 900;
-        margin: 0;
-      }
-      .heading {
-        color: #088208;
-        text-align: center;
-        margin: 10px;
-        margin-top: 0;
-      }
-      #name,
-      #fname {
-        text-transform: uppercase;
-      }
-
       button {
-        background-color: #088208;
+        background-color: lightseagreen;
         color: white;
-        padding: 15px 25px;
+        border: 1px solid lightseagreen;
+        padding: 10px 15px;
         cursor: pointer;
-        border: 1px solid #088208;
       }
       button:hover {
-        color: #088208;
         background-color: white;
+        color: lightseagreen;
         transition: 0.5s ease;
       }
-      .newData {
-        width: 50%;
-        margin: auto;
-        display: flex;
-        justify-content: space-evenly;
-        margin-top: 50px;
+      .head {
+        color: lightseagreen;
       }
-      @media (max-width: 650px) {
+      @media (max-width: 990px) {
         .container {
-          width: 90%;
-          margin: auto;
-        }
-        .newData {
-          flex-direction: column;
-        }
-        button {
-          margin-bottom: 20px;
-        }
-        .heading {
-          font-size: 25px;
+          width: 100%;
         }
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1 class="heading">
-        <i class="fab fa-canadian-maple-leaf"></i>
-        <i class="fab fa-canadian-maple-leaf"></i> Calculator
-        <i class="fab fa-canadian-maple-leaf"></i>
-        <i class="fab fa-canadian-maple-leaf"></i>
-      </h1>
-      <table>
-        <tr>
-          <td class="info">
-            <h1>Operation:</h1>
-          </td>
-          <td id="operator"></td>
-        </tr>
-        <tr>
-          <td class="info"><h1>First Digit:</h1></td>
-          <td id="fdigit"></td>
-        </tr>
-        <tr>
-          <td class="info"><h1>Second Digit:</h1></td>
-          <td id="sdigit"></td>
-        </tr>
-        <tr>
-          <td class="info"><h1>Result:</h1></td>
-          <td id="result"></td>
-        </tr>
-      </table>
-    </div>
-    <div class="newData">
-      <button onclick="start()">New Calculation?</button>
+      <ul class="nav nav-tabs" style="margin-bottom: 50px">
+        <li class="active">
+          <a data-toggle="tab" href="#question1-2">Question 1 & 2</a>
+        </li>
+        <li><a data-toggle="tab" href="#question3">Question 3</a></li>
+        <li><a data-toggle="tab" href="#question4">Question 4</a></li>
+        <li><a data-toggle="tab" href="#question5">Question 5</a></li>
+        <li><a data-toggle="tab" href="#question6">Question 6</a></li>
+        <li><a data-toggle="tab" href="#question7">Question 7</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="question1-2" class="tab-pane fade in active">
+          <hr />
+          <h1>Question: Print First 10 Natural Numbers and their Sum!</h1>
+          <hr />
+          <h3 class="head">First 10 Natural Numbers are:</h3>
+          <h4 id="natural"></h4>
+          <h3 class="head">Sum of First 10 Natural Numbers is:</h3>
+          <h4 id="natural-sum"></h4>
+        </div>
+        <div id="question3" class="tab-pane fade">
+          <hr />
+          <h1>Question: Print n Natural Numbers and their Sum!</h1>
+          <hr />
+          <div class="question3">
+            <h3 class="head" id="info1"></h3>
+            <h4 id="natural2"></h4>
+            <h3 class="head" id="info2"></h3>
+            <h4 id="natural-sum2"></h4>
+          </div>
+          <button onclick="question3()">Enter a Number?</button>
+        </div>
+        <div id="question4" class="tab-pane fade">
+          <hr />
+          <h1>Question: Program to print a square pattern with # character!</h1>
+          <hr />
+          <h4 id="char"></h4>
+          <button onclick="question4()">Enter a Number?</button>
+        </div>
+        <div id="question5" class="tab-pane fade">
+          <hr />
+          <h1>Question: Enter a Number and Print Table!</h1>
+          <hr />
+          <h3 id="table"></h3>
+          <button onclick="question5()">Enter a Number?</button>
+        </div>
+        <div id="question6" class="tab-pane fade">
+          <h1></h1>
+          <h1>
+            Question: Program to Display n Odd Natural Numbers and their Sum!
+          </h1>
+          <hr />
+          <h3 class="head" id="info3"></h3>
+          <h4 id="odd"></h4>
+          <h3 class="head" id="info4"></h3>
+          <h4 id="odd-sum"></h4>
+          <button onclick="question6()">Enter a Number?</button>
+        </div>
+        <div id="question7" class="tab-pane fade">
+          <hr />
+          <h1>
+            Question: Program to Display n Even Natural Numbers and their Sum!
+          </h1>
+          <hr />
+          <h3 class="head" id="info5"></h3>
+          <h4 id="even"></h4>
+          <h3 class="head" id="info6"></h3>
+          <h4 id="even-sum"></h4>
+          <button onclick="question7()">Enter a Number?</button>
+        </div>
+      </div>
     </div>
 
     <script>
-      var option, firstDigit, secondDigit, result, output, operator;
-
-      function getInput() {
-        firstDigit = parseInt(prompt("Enter First Digit!"));
-        secondDigit = parseInt(prompt("Enter Second Digit!"));
+      function question1_2() {
+        var string = "";
+        var sum = 0;
+        for (var i = 1; i <= 10; i++) {
+          string = string + " " + i;
+          sum += i;
+        }
+        document.getElementById("natural").innerHTML = string;
+        document.getElementById("natural-sum").innerHTML = sum;
       }
 
-      function putValues() {
-        document.getElementById("operator").innerHTML = operator;
-        document.getElementById("fdigit").innerHTML = firstDigit;
-        document.getElementById("sdigit").innerHTML = secondDigit;
-        document.getElementById("result").innerHTML = result;
-      }
-
-      function calculateResult() {
-        option = prompt(
-          "Enter 1 for Addition, 2 for Subtraction, 3 for Multiplication, 4 for Division"
+      function question3() {
+        var string = "";
+        var sum = 0;
+        var number = prompt(
+          "Enter a number to display Natural Numbers and their Sum!"
         );
-        switch (option) {
-          case "1":
-            getInput();
-            operator = "Addition";
-            result = firstDigit + secondDigit;
-            break;
-          case "2":
-            getInput();
-            operator = "Subtration";
-            result = firstDigit - secondDigit;
-            output = `The Difference of ${firstDigit} and ${secondDigit} is ${result}.`;
-            break;
-          case "3":
-            getInput();
-            operator = "Multiplication";
-            result = firstDigit * secondDigit;
-            output = `The Multiplication of ${firstDigit} and ${secondDigit} is ${result}.`;
-            break;
-          case "4":
-            getInput();
-            operator = "Division";
-            result = firstDigit / secondDigit;
-            output = `The Division of ${firstDigit} and ${secondDigit} is ${result}.`;
-            break;
-          default:
-            alert("Wrong Option Selected!");
-            calculateResult();
-            if (!result) {
-              alert("Invalid Inputs! Cannot Compute Result!");
-              start();
-            }
-            putValues();
-            break;
+        if (number >= 1) {
+          for (var i = 1; i <= number; i++) {
+            string = string + " " + i;
+            sum += i;
+          }
+          document.getElementById("natural2").innerHTML = string;
+          document.getElementById("natural-sum2").innerHTML = sum;
+          document.getElementById(
+            "info1"
+          ).innerHTML = `The First ${number} Natural Numbers are:`;
+          document.getElementById(
+            "info2"
+          ).innerHTML = `The Sum of First ${number} Natural Numbers is:`;
+        } else {
+          alert("You have to Enter Number greater than 0!");
+          question3();
         }
       }
 
-      function start() {
-        calculateResult();
-        if (!result) {
-          alert("Invalid Inputs! Cannot Compute Result!");
-          start();
+      function question4() {
+        var n = prompt("Input Number of Characters!");
+        var string = "";
+        if (n > 0) {
+          for (var i = 0; i < n; i++) {
+            for (var j = 0; j < n; j++) {
+              string = string + "# &ensp;";
+            }
+            string = string + "<br>";
+          }
+          document.getElementById("char").innerHTML = string;
+        } else {
+          alert("Invalid Input! You must enter number greater than 0!");
+          question4();
         }
-        putValues();
       }
-      start();
+
+      function question5() {
+        var number = prompt("Enter a Number");
+        var string = "";
+        if (number >= 0 || number < 0) {
+          for (var i = 1; i <= 10; i++) {
+            if (i == 10) {
+              string += `${number} x ${i} = ${number * i} <br>`;
+            } else {
+              string += `${number} x ${i}&ensp; = ${number * i} <br>`;
+            }
+          }
+          document.getElementById("table").innerHTML = string;
+        } else {
+          alert("You have not entered a Number! Kindly Enter a Number!");
+          question5();
+        }
+      }
+
+      function question6() {
+        var number = prompt("Enter a Number!");
+        var temp = 0;
+        var numbers = 1;
+        var string = "";
+        var sum = 0;
+        if (number > 0) {
+          while (temp != number) {
+            if (numbers % 2 == 1) {
+              string = string + numbers + " ";
+              sum += numbers;
+              temp++;
+            }
+            numbers++;
+          }
+          document.getElementById(
+            "info3"
+          ).innerHTML = `First ${number} Natural Odd Numbers are:`;
+          document.getElementById("odd").innerHTML = string;
+          document.getElementById(
+            "info4"
+          ).innerHTML = `Sum of First ${number} Natural Odd Numbers are:`;
+          document.getElementById("odd-sum").innerHTML = sum;
+        } else {
+          alert(
+            "You have entered Invalid Number! Number must be greater than 0!"
+          );
+          question6();
+        }
+      }
+
+      function question7() {
+        var temp = 0;
+        var numbers = 1;
+        var string = "";
+        var sum = 0;
+        var number = prompt("Enter a Number!");
+        if (number > 0) {
+          while (temp != number) {
+            if (numbers % 2 == 0) {
+              string = string + numbers + " ";
+              sum += numbers;
+              temp++;
+            }
+            numbers++;
+          }
+          document.getElementById(
+            "info5"
+          ).innerHTML = `First ${number} Natural Even Numbers are:`;
+          document.getElementById("even").innerHTML = string;
+          document.getElementById(
+            "info6"
+          ).innerHTML = `Sum of First ${number} Natural Even Numbers are:`;
+          document.getElementById("even-sum").innerHTML = sum;
+        } else {
+          alert(
+            "You have entered Invalid Number! Number must be greater than 0!"
+          );
+          question7();
+        }
+      }
+
+      question1_2();
     </script>
   </body>
 </html>
