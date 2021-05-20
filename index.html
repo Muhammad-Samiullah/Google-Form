@@ -4,251 +4,243 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Activity 6</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
     <style>
-      .container {
-        width: 70%;
+      body {
+        width: 80%;
         margin: auto;
+      }
+      h1 {
+        text-align: center;
+        color: coral;
+      }
+      .first-page {
+        display: block;
+        margin-top: 100px;
+      }
+      .first-page-content {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .second-page {
+        display: none;
+        margin-top: 100px;
       }
       button {
         background-color: lightseagreen;
-        color: white;
         border: 1px solid lightseagreen;
-        padding: 10px 15px;
+        color: white;
+        padding: 5px 0px;
+        width: 150px;
         cursor: pointer;
+        margin-bottom: 50px;
       }
       button:hover {
         background-color: white;
         color: lightseagreen;
         transition: 0.5s ease;
       }
-      .head {
-        color: lightseagreen;
+      .input-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
       }
-      @media (max-width: 990px) {
-        .container {
-          width: 100%;
-        }
+      .function-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+      .function-buttons button,
+      .second-page button {
+        padding: 15px 0px;
+        background-color: coral;
+        border: 1px solid coral;
+      }
+      .function-buttons button:hover,
+      .second-page button:hover {
+        background-color: white;
+      }
+      .buttons {
+        width: 50%;
+      }
+      .info {
+        width: 50%;
+        padding-left: 30px;
+      }
+      .info h3 {
+        text-align: center;
+      }
+      table,
+      td,
+      th {
+        border: 1px solid coral;
+        border-collapse: collapse;
+      }
+      td {
+        text-align: center;
+      }
+      td,
+      th {
+        padding: 15px;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <ul class="nav nav-tabs" style="margin-bottom: 50px">
-        <li class="active">
-          <a data-toggle="tab" href="#question1-2">Question 1 & 2</a>
-        </li>
-        <li><a data-toggle="tab" href="#question3">Question 3</a></li>
-        <li><a data-toggle="tab" href="#question4">Question 4</a></li>
-        <li><a data-toggle="tab" href="#question5">Question 5</a></li>
-        <li><a data-toggle="tab" href="#question6">Question 6</a></li>
-        <li><a data-toggle="tab" href="#question7">Question 7</a></li>
-      </ul>
-
-      <div class="tab-content">
-        <div id="question1-2" class="tab-pane fade in active">
-          <hr />
-          <h1>Question: Print First 10 Natural Numbers and their Sum!</h1>
-          <hr />
-          <h3 class="head">First 10 Natural Numbers are:</h3>
-          <h4 id="natural"></h4>
-          <h3 class="head">Sum of First 10 Natural Numbers is:</h3>
-          <h4 id="natural-sum"></h4>
-        </div>
-        <div id="question3" class="tab-pane fade">
-          <hr />
-          <h1>Question: Print n Natural Numbers and their Sum!</h1>
-          <hr />
-          <div class="question3">
-            <h3 class="head" id="info1"></h3>
-            <h4 id="natural2"></h4>
-            <h3 class="head" id="info2"></h3>
-            <h4 id="natural-sum2"></h4>
+    <hr />
+    <h1>Coffee Shop</h1>
+    <hr />
+    <div class="first-page">
+      <div class="first-page-content">
+        <div class="buttons">
+          <div class="input-buttons">
+            <button onclick="buyFirstCoffee()">Buy Regular Coffee</button>
+            <button onclick="buySecondCoffee()">
+              Buy Decaffeinated Coffee
+            </button>
+            <button onclick="buyThirdCoffee()">Buy Mocha Coffee</button>
           </div>
-          <button onclick="question3()">Enter a Number?</button>
+          <div class="function-buttons">
+            <button onclick="displayTotal()">Continue</button>
+            <button onclick="reset()">Reset</button>
+          </div>
         </div>
-        <div id="question4" class="tab-pane fade">
-          <hr />
-          <h1>Question: Program to print a square pattern with # character!</h1>
-          <hr />
-          <h4 id="char"></h4>
-          <button onclick="question4()">Enter a Number?</button>
-        </div>
-        <div id="question5" class="tab-pane fade">
-          <hr />
-          <h1>Question: Enter a Number and Print Table!</h1>
-          <hr />
-          <h3 id="table"></h3>
-          <button onclick="question5()">Enter a Number?</button>
-        </div>
-        <div id="question6" class="tab-pane fade">
-          <h1></h1>
-          <h1>
-            Question: Program to Display n Odd Natural Numbers and their Sum!
-          </h1>
-          <hr />
-          <h3 class="head" id="info3"></h3>
-          <h4 id="odd"></h4>
-          <h3 class="head" id="info4"></h3>
-          <h4 id="odd-sum"></h4>
-          <button onclick="question6()">Enter a Number?</button>
-        </div>
-        <div id="question7" class="tab-pane fade">
-          <hr />
-          <h1>
-            Question: Program to Display n Even Natural Numbers and their Sum!
-          </h1>
-          <hr />
-          <h3 class="head" id="info5"></h3>
-          <h4 id="even"></h4>
-          <h3 class="head" id="info6"></h3>
-          <h4 id="even-sum"></h4>
-          <button onclick="question7()">Enter a Number?</button>
+
+        <div class="info">
+          <h3 id="quantity1"></h3>
+          <h3 id="quantity2"></h3>
+          <h3 id="quantity3"></h3>
         </div>
       </div>
     </div>
 
+    <div class="second-page">
+      <table>
+        <tr>
+          <th>Coffee Name</th>
+          <th>Quantity</th>
+          <th>Price per Unit</th>
+          <th>Total Price</th>
+        </tr>
+        <tr>
+          <td>Regular Coffee</td>
+          <td class="quantity1">0</td>
+          <td>9</td>
+          <td class="first-price">0</td>
+        </tr>
+        <tr>
+          <td>Decaffeinated Coffee</td>
+          <td class="quantity2">0</td>
+          <td>8</td>
+          <td class="second-price">0</td>
+        </tr>
+        <tr>
+          <td>Mocha Coffee</td>
+          <td class="quantity3">0</td>
+          <td>11</td>
+          <td class="third-price">0</td>
+        </tr>
+      </table>
+      <h3 id="total-price"></h3>
+      <h3 id="discount"></h3>
+      <h3 id="disc-price"></h3>
+      <button onclick="back()">Back to First Page?</button>
+    </div>
+
     <script>
-      function question1_2() {
-        var string = "";
-        var sum = 0;
-        for (var i = 1; i <= 10; i++) {
-          string = string + " " + i;
-          sum += i;
-        }
-        document.getElementById("natural").innerHTML = string;
-        document.getElementById("natural-sum").innerHTML = sum;
-      }
+      var firstPrice = 9;
+      var secondPrice = 8;
+      var thirdPrice = 11;
+      var totalPrice = 0;
 
-      function question3() {
-        var string = "";
-        var sum = 0;
-        var number = prompt(
-          "Enter a number to display Natural Numbers and their Sum!"
-        );
-        if (number >= 1) {
-          for (var i = 1; i <= number; i++) {
-            string = string + " " + i;
-            sum += i;
-          }
-          document.getElementById("natural2").innerHTML = string;
-          document.getElementById("natural-sum2").innerHTML = sum;
+      function buyFirstCoffee() {
+        var quantity = 0,
+          price = 0;
+        quantity = prompt("Enter Quantity of Regular Cofee:");
+        if (quantity > 0) {
+          price = quantity * 9;
+          totalPrice += price;
           document.getElementById(
-            "info1"
-          ).innerHTML = `The First ${number} Natural Numbers are:`;
-          document.getElementById(
-            "info2"
-          ).innerHTML = `The Sum of First ${number} Natural Numbers is:`;
+            "quantity1"
+          ).innerHTML = `Quantity of Regular Coffee: ${quantity}`;
+          document.querySelector(".quantity1").innerHTML = quantity;
+          document.querySelector(".first-price").innerHTML = price;
         } else {
-          alert("You have to Enter Number greater than 0!");
-          question3();
+          alert("Quantity must be greater than 0!");
+          buyFirstCoffee();
         }
       }
 
-      function question4() {
-        var n = prompt("Input Number of Characters!");
-        var string = "";
-        if (n > 0) {
-          for (var i = 0; i < n; i++) {
-            for (var j = 0; j < n; j++) {
-              string = string + "# &ensp;";
-            }
-            string = string + "<br>";
-          }
-          document.getElementById("char").innerHTML = string;
-        } else {
-          alert("Invalid Input! You must enter number greater than 0!");
-          question4();
-        }
-      }
-
-      function question5() {
-        var number = prompt("Enter a Number");
-        var string = "";
-        if (number >= 0 || number < 0) {
-          for (var i = 1; i <= 10; i++) {
-            if (i == 10) {
-              string += `${number} x ${i} = ${number * i} <br>`;
-            } else {
-              string += `${number} x ${i}&ensp; = ${number * i} <br>`;
-            }
-          }
-          document.getElementById("table").innerHTML = string;
-        } else {
-          alert("You have not entered a Number! Kindly Enter a Number!");
-          question5();
-        }
-      }
-
-      function question6() {
-        var number = prompt("Enter a Number!");
-        var temp = 0;
-        var numbers = 1;
-        var string = "";
-        var sum = 0;
-        if (number > 0) {
-          while (temp != number) {
-            if (numbers % 2 == 1) {
-              string = string + numbers + " ";
-              sum += numbers;
-              temp++;
-            }
-            numbers++;
-          }
+      function buySecondCoffee() {
+        var quantity = 0,
+          price = 0;
+        quantity = prompt("Enter Quantity of Decaffeinated Cofee:");
+        if (quantity > 0) {
+          price = quantity * 8;
+          totalPrice += price;
           document.getElementById(
-            "info3"
-          ).innerHTML = `First ${number} Natural Odd Numbers are:`;
-          document.getElementById("odd").innerHTML = string;
-          document.getElementById(
-            "info4"
-          ).innerHTML = `Sum of First ${number} Natural Odd Numbers are:`;
-          document.getElementById("odd-sum").innerHTML = sum;
+            "quantity2"
+          ).innerHTML = `Quantity of Decaffeinated Coffee: ${quantity}`;
+          document.querySelector(".quantity2").innerHTML = quantity;
+          document.querySelector(".second-price").innerHTML = price;
         } else {
-          alert(
-            "You have entered Invalid Number! Number must be greater than 0!"
-          );
-          question6();
+          alert("Quantity must be greater than 0!");
+          buySecondCoffee();
         }
       }
 
-      function question7() {
-        var temp = 0;
-        var numbers = 1;
-        var string = "";
-        var sum = 0;
-        var number = prompt("Enter a Number!");
-        if (number > 0) {
-          while (temp != number) {
-            if (numbers % 2 == 0) {
-              string = string + numbers + " ";
-              sum += numbers;
-              temp++;
-            }
-            numbers++;
-          }
+      function buyThirdCoffee() {
+        var quantity = 0,
+          price = 0;
+        quantity = prompt("Enter Quantity of Mocha Cofee:");
+        if (quantity > 0) {
+          price = quantity * 11;
+          totalPrice += price;
           document.getElementById(
-            "info5"
-          ).innerHTML = `First ${number} Natural Even Numbers are:`;
-          document.getElementById("even").innerHTML = string;
-          document.getElementById(
-            "info6"
-          ).innerHTML = `Sum of First ${number} Natural Even Numbers are:`;
-          document.getElementById("even-sum").innerHTML = sum;
+            "quantity3"
+          ).innerHTML = `Quantity of Mocha Coffee: ${quantity}`;
+          document.querySelector(".quantity3").innerHTML = quantity;
+          document.querySelector(".third-price").innerHTML = price;
         } else {
-          alert(
-            "You have entered Invalid Number! Number must be greater than 0!"
-          );
-          question7();
+          alert("Quantity must be greater than 0!");
+          buyThirdCoffee();
         }
       }
 
-      question1_2();
+      function displayTotal() {
+        document.querySelector(".first-page").style.display = "none";
+        document.querySelector(".second-page").style.display = "block";
+        document.getElementById(
+          "total-price"
+        ).innerHTML = `Total Price: Rs. ${totalPrice}`;
+        if (totalPrice >= 100) {
+          document.getElementById("discount").innerHTML = `Discount: Rs. 15`;
+          totalPrice -= 15;
+          document.getElementById(
+            "disc-price"
+          ).innerHTML = `Price after Discount: Rs. ${totalPrice}`;
+        } else {
+          document.getElementById("discount").innerHTML = "";
+          document.getElementById("disc-price").innerHTML = ``;
+        }
+      }
+
+      function back() {
+        document.querySelector(".first-page").style.display = "block";
+        document.querySelector(".second-page").style.display = "none";
+      }
+
+      function reset() {
+        totalPrice = 0;
+        document.getElementById("quantity1").innerHTML = "";
+        document.getElementById("quantity2").innerHTML = "";
+        document.getElementById("quantity3").innerHTML = "";
+        document.querySelector(".quantity1").innerHTML = "0";
+        document.querySelector(".quantity2").innerHTML = "0";
+        document.querySelector(".quantity3").innerHTML = "0";
+        document.querySelector(".first-price").innerHTML = "0";
+        document.querySelector(".second-price").innerHTML = "0";
+        document.querySelector(".third-price").innerHTML = "0";
+      }
     </script>
   </body>
 </html>
