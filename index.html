@@ -1,201 +1,295 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Activity 8</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+    <meta charset="utf-8" />
+    <title>JavaSctipt Basic Calculator</title>
     <style>
-      .container {
-        width: 50%;
-        margin: auto;
-      }
-      button {
-        background-color: #ad133a;
-        border: 1px solid #ad133a;
-        color: white;
-        padding: 10px 15px;
-        cursor: pointer;
-        letter-spacing: 1px;
-      }
-      button:hover {
-        transition: 0.5s ease;
-        color: #ad133a;
-        background-color: white;
-      }
-      #activity1 {
-        margin-top: 50px;
-        text-align: center;
-        color: black;
-      }
-      #age {
-        margin: 50px;
-      }
-      #activity2 {
-        padding: 20px 0px;
-        background-color: #641208;
-      }
-      .calculator {
-        width: 60%;
-        margin: auto;
-        background-color: #f7f7f7;
-        border-radius: 10px;
-      }
-      .heading {
-        background-color: #1f030c;
+      body,
+      html {
+        background: white;
         margin: 0;
-        padding: 10px;
-        text-align: center;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        padding: 0;
+      }
+
+      .container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        box-shadow: 0px 0px 15px darkslategray;
+        border-radius: 14px;
+        padding-bottom: 20px;
+        width: 320px;
+        border: 3px solid #0086ff;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+      }
+      .display {
+        width: 100%;
+        height: 60px;
+        padding: 20px 0;
+        background: #0086ff;
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+      }
+      .buttons {
+        padding: 20px 20px 0 20px;
+      }
+      .row {
+        width: 280px;
+        float: left;
+      }
+      input[type="button"] {
+        width: 60px;
+        height: 60px;
+        float: left;
+        padding: 0;
+        margin: 5px;
+        box-sizing: border-box;
+        background: #ecedef;
+        border: none;
+        box-shadow: 0px 0px 3px #0086ff;
+        font-size: 30px;
+        line-height: 30px;
+        border-radius: 5px;
+        font-weight: 700;
+        color: #5e5858;
+        cursor: pointer;
+      }
+      input[type="button"]:hover {
+        background-color: #0086ff;
         color: white;
-        text-transform: uppercase;
-      }
-      .form {
-        padding: 20px;
-      }
-      input {
-        border-radius: 25px;
-        padding: 5px 10px;
-        border: 2px solid #ad133a;
-      }
-      input:hover {
-        padding: 5px 25px;
         transition: 0.5s ease;
       }
-      input:focus {
+      input[type="text"] {
+        width: 270px;
+        height: 60px;
+        float: left;
+        padding: 0;
+        box-sizing: border-box;
+        border: none;
+        background: none;
+        color: #ffffff;
+        text-align: right;
+        font-weight: 700;
+        font-size: 60px;
+        line-height: 60px;
+        margin: 0 25px;
+      }
+      input[type="text"]::placeholder {
+        color: white;
+      }
+      input[type="text"]:focus {
         outline: none;
       }
-      select {
-        border-radius: 25px;
-        padding: 5px 10px;
-        border: 2px solid #ad133a;
+      .red {
+        background: #ff0509 !important;
+        color: #ffffff !important;
       }
-      select:hover {
-        padding: 5px 25px;
+      #equal {
+        background-color: #0086ff;
+        color: white;
+        position: relative;
+        animation-name: swing;
+        animation-duration: 1.5s;
+        animation-iteration-count: 1;
+        animation-delay: 0.5s;
+      }
+      #operator {
+        background-color: #9acdff;
+        color: white;
+      }
+      #operator:hover {
+        background-color: #0086ff;
+      }
+      #equal:hover {
+        background-color: white;
+        color: #0086ff;
+        border: 2px solid #0086ff;
         transition: 0.5s ease;
       }
-      select:focus {
-        outline: none;
-      }
-      option {
-        background-color: #f7f7f7;
-        color: #ad133a;
-        font-weight: bold;
-      }
-      .tip {
-          color: darkgreen;
-      }
-      .para {
-          display: none;
-      }
-      @media(max-width: 990px) {
-          .container {
-              width: 80%;
-          }
-      }
-      @media(max-width: 620px) {
-          .container {
-              width: 100%;
-          }
-        .calculator {
-            width: 90%;
+      @keyframes swing {
+        0% {
+          width: 30%;
+          left: 0;
         }
+        50% {
+          width: 30%;
+          left: 67%;
+        }
+        100% {
+          width: 30%;
+          left: 35%;
+        }
+      }
     </style>
   </head>
+
   <body>
     <div class="container">
-      <ul class="nav nav-tabs">
-        <li class="active">
-          <a data-toggle="tab" href="#activity1">Activity 1</a>
-        </li>
-        <li><a data-toggle="tab" href="#activity2">Activity 2</a></li>
-      </ul>
-
-      <div class="tab-content">
-        <div id="activity1" class="tab-pane fade in active">
-          <h1>Question 1</h1>
-          <h3 id="age"></h3>
-          <button onclick="myFunction()">Calculate your Age?</button>
+      <form name="form">
+        <div class="display">
+          <input type="text" placeholder="0" name="displayResult" disabled />
         </div>
-        <div id="activity2" class="tab-pane fade">
-          <div class="calculator">
-            <div class="head">
-              <h3 class="heading">Tip Calculator</h3>
-            </div>
-            <div class="form">
-              <form method="POST" autocomplete="off"">
-                <p>How much was your bill?</p>
-                <input
-                  type="text"
-                  name="bill"
-                  id="bill"
-                  placeholder="Bill Amount"
-                />
-                <br /><br />
-                <p>How was your Service?</p>
-                <select id="service">
-                  <option value="">--Choose an Option--</option>
-                  <option value="0.3">30% - Outstanding</option>
-                  <option value="0.2">20% - Good</option>
-                  <option value="0.15">15% - It was Ok</option>
-                  <option value="0.1">10% - Bad</option>
-                  <option value="0.05">5% - Terrible</option>
-                </select>
-                <br /><br />
-                <p>How many people are sharing the bill?</p>
-                <input
-                  type="text"
-                  name="people"
-                  id="people"
-                  placeholder="Number of People"
-                />
-                <br /><br />
-                <div class="button text-center">
-                <button style="margin-bottom: 20px; padding: 10px 40px;" type="button" onclick="calculateBill()">Calculate</button>
-            </div>
-              </form>
-              <p class="text-center para">The Amount each Person will contribute for Tip is:</p>
-              <h3 class="text-center"><span class="tip" id="amount"></span></h3>
-            </div>
+        <div class="buttons">
+          <div class="row">
+            <input
+              type="button"
+              name="b7"
+              value="7"
+              onClick="calcNumbers(b7.value)"
+            />
+            <input
+              type="button"
+              name="b8"
+              value="8"
+              onClick="calcNumbers(b8.value)"
+            />
+            <input
+              type="button"
+              name="b9"
+              value="9"
+              onClick="calcNumbers(b9.value)"
+            />
+            <input
+              id="operator"
+              type="button"
+              name="addb"
+              value="+"
+              onClick="calcNumbers(addb.value)"
+            />
+          </div>
+
+          <div class="row">
+            <input
+              type="button"
+              name="b4"
+              value="4"
+              onClick="calcNumbers(b4.value)"
+            />
+            <input
+              type="button"
+              name="b5"
+              value="5"
+              onClick="calcNumbers(b5.value)"
+            />
+            <input
+              type="button"
+              name="b6"
+              value="6"
+              onClick="calcNumbers(b6.value)"
+            />
+            <input
+              id="operator"
+              type="button"
+              name="subb"
+              value="-"
+              onClick="calcNumbers(subb.value)"
+            />
+          </div>
+
+          <div class="row">
+            <input
+              type="button"
+              name="b1"
+              value="1"
+              onClick="calcNumbers(b1.value)"
+            />
+            <input
+              type="button"
+              name="b2"
+              value="2"
+              onClick="calcNumbers(b2.value)"
+            />
+            <input
+              type="button"
+              name="b3"
+              value="3"
+              onClick="calcNumbers(b3.value)"
+            />
+            <input
+              id="operator"
+              type="button"
+              name="mulb"
+              value="*"
+              onClick="calcNumbers(mulb.value)"
+            />
+          </div>
+
+          <div class="row">
+            <input
+              type="button"
+              name="b0"
+              value="0"
+              onClick="calcNumbers(b0.value)"
+            />
+            <input
+              type="button"
+              name="potb"
+              value="."
+              onClick="calcNumbers(potb.value)"
+            />
+            <input
+              type="button"
+              id="operator"
+              name="divb"
+              value="/"
+              onClick="calcNumbers(divb.value)"
+            />
+            <input
+              type="button"
+              id="operator"
+              value="C"
+              onClick="clearInput()"
+            />
+          </div>
+
+          <div class="row">
+            <input
+              id="equal"
+              style="width: 98%"
+              type="button"
+              value="="
+              onClick="calResult()"
+            />
           </div>
         </div>
-      </div>
+      </form>
     </div>
 
     <script>
-        function calAge(age) {
-            return age * 365;
+      function calcNumbers(result) {
+        form.displayResult.value = form.displayResult.value + result;
+        if (form.displayResult.value.length > 8) {
+          document.querySelector(".display input").style.fontSize = "25px";
+        } else {
+          document.querySelector(".display input").style.fontSize = "60px";
         }
-        
-        function myFunction() {
-            var age = prompt("Enter your age");
-            if(age >= 0) {
-                var result = calAge(age);
-                document.getElementById("age").innerHTML = `${age} Years in Days is ${result} Days!`;
-            }
-            else {
-                alert("Invalid Age! Age must be Positive Number!");
-                myFunction()
-            }
+      }
+
+      function clearInput() {
+        form.displayResult.value = "";
+        document.querySelector(".display input").style.fontSize = "60px";
+      }
+
+      function calResult() {
+        if (form.displayResult.value == "") {
+          alert("Cannot Compute for Emply Input!");
+          return;
         }
-        
-        function calculateBill() {
-            var bill_amount = document.getElementById("bill").value;
-            var service = document.getElementById("service").value;
-            var people = document.getElementById("people").value;
-            var total_bill = (bill_amount * service) / people;
-            total_bill = total_bill.toFixed(2);
-            document.getElementById('amount').innerHTML = `$${total_bill}`;
-            document.querySelector('.para').style.display = "block";
-          }
+        var result = eval(form.displayResult.value);
+        if (!result && result != "0") {
+          alert("Invalid Input! Cannot Compute Result!");
+          return;
+        }
+        form.displayResult.value = result;
+        if (form.displayResult.value.length > 8) {
+          document.querySelector(".display input").style.fontSize = "25px";
+        } else {
+          document.querySelector(".display input").style.fontSize = "60px";
+        }
+      }
     </script>
   </body>
 </html>
