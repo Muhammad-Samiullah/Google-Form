@@ -12,15 +12,14 @@
       }
 
       .new {
-        display: grid;
-        place-content: center;
-        width: 100vw;
-        height: 100vh;
+        display: flex;
+        justify-content: center;
       }
 
       .container {
         width: 320px;
         height: 490px;
+        padding-top: 0px;
         margin: auto;
         border: 3px solid #0086ff;
         border-top-left-radius: 15px;
@@ -112,6 +111,12 @@
         border: 2px solid #0086ff;
         transition: 0.5s ease;
       }
+      .heading {
+        animation-name: change;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        text-align: center;
+      }
       @keyframes swing {
         0% {
           width: 30%;
@@ -126,10 +131,21 @@
           left: 35%;
         }
       }
+      @keyframes change {
+        from {
+          color: #ecedef;
+          opacity: 0;
+        }
+        to {
+          color: #0086ff;
+          opacity: 1;
+        }
+      }
     </style>
   </head>
 
   <body>
+    <h1 class="heading">Calculator</h1>
     <div class="new">
       <div class="container">
         <form name="form">
