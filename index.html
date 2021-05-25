@@ -1,316 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>JavaSctipt Basic Calculator</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Activity 11</title>
     <style>
-      body,
-      html {
-        background: white;
+      * {
         margin: 0;
         padding: 0;
       }
-
-      .new {
-        display: flex;
-        justify-content: center;
-      }
-
       .container {
-        width: 320px;
-        height: 490px;
-        padding-top: 0px;
+        width: 60%;
         margin: auto;
-        border: 3px solid #0086ff;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-        border-radius: 20px;
-        box-shadow: 0px 0px 15px darkslategray;
       }
-      .display {
-        width: 100%;
-        height: 60px;
-        padding: 20px 0;
-        background: #0086ff;
-        border-top-left-radius: 14px;
-        border-top-right-radius: 14px;
+      h2 {
+        margin: 50px 0px;
+        border-top: 2px solid darkgrey;
+        border-bottom: 2px solid darkgrey;
+        padding: 20px 0px;
       }
-      .buttons {
-        padding: 20px 20px 0 20px;
-      }
-      .row {
-        width: 280px;
-        float: left;
-      }
-      input[type="button"] {
-        width: 60px;
-        height: 60px;
-        float: left;
-        padding: 0;
-        margin: 5px;
-        box-sizing: border-box;
-        background: #ecedef;
-        border: none;
-        box-shadow: 0px 0px 3px #0086ff;
-        font-size: 30px;
-        line-height: 30px;
-        border-radius: 5px;
-        font-weight: 700;
-        color: #5e5858;
+      button {
+        width: 150px;
+        padding: 15px 0px;
+        background-color: lightsalmon;
+        color: white;
         cursor: pointer;
+        border: 1px solid lightsalmon;
+        margin: 25px 0px;
       }
-      input[type="button"]:hover {
-        background-color: #0086ff;
-        color: white;
-        transition: 0.5s ease;
-      }
-      input[type="text"] {
-        width: 270px;
-        height: 60px;
-        float: left;
-        padding: 0;
-        box-sizing: border-box;
-        border: none;
-        background: none;
-        color: #ffffff;
-        text-align: right;
-        font-weight: 700;
-        font-size: 60px;
-        line-height: 60px;
-        margin: 0 25px;
-      }
-      input[type="text"]::placeholder {
-        color: white;
-      }
-      input[type="text"]:focus {
-        outline: none;
-      }
-      .red {
-        background: #ff0509 !important;
-        color: #ffffff !important;
-      }
-      #equal {
-        background-color: #0086ff;
-        color: white;
-        position: relative;
-        animation-name: swing;
-        animation-duration: 1.5s;
-        animation-iteration-count: 1;
-        animation-delay: 0.5s;
-      }
-      #operator {
-        background-color: #9acdff;
-        color: white;
-      }
-      #operator:hover {
-        background-color: #0086ff;
-      }
-      #equal:hover {
+      button:hover {
         background-color: white;
-        color: #0086ff;
-        border: 2px solid #0086ff;
+        color: lightsalmon;
         transition: 0.5s ease;
       }
-      .heading {
-        animation-name: change;
-        animation-duration: 3s;
-        animation-iteration-count: infinite;
-        text-align: center;
+      .question1,
+      .question2,
+      .question3 {
+        display: grid;
+        place-content: center;
+        margin-left: -50px;
       }
-      @keyframes swing {
-        0% {
-          width: 30%;
-          left: 0;
-        }
-        50% {
-          width: 30%;
-          left: 67%;
-        }
-        100% {
-          width: 30%;
-          left: 35%;
-        }
+      #question1-output {
+        font-size: 17px;
       }
-      @keyframes change {
-        from {
-          color: #ecedef;
-          opacity: 0;
-        }
-        to {
-          color: #0086ff;
-          opacity: 1;
+      table {
+        width: 100%;
+      }
+      td {
+        padding: 20px;
+      }
+      .question3 {
+        margin-bottom: 100px;
+      }
+      .special {
+        color: salmon;
+        font-size: 17px;
+      }
+      .question3 p {
+        margin: 20px 0px;
+      }
+      .info {
+        font-weight: bold;
+        font-size: 17px;
+      }
+      @media (max-width: 770px) {
+        .container {
+          width: 90%;
         }
       }
     </style>
   </head>
-
   <body>
-    <h1 class="heading">Calculator</h1>
-    <div class="new">
-      <div class="container">
-        <form name="form">
-          <div class="display">
-            <input type="text" placeholder="0" name="displayResult" disabled />
-          </div>
-          <div class="buttons">
-            <div class="row">
-              <input
-                type="button"
-                name="b7"
-                value="7"
-                onClick="calcNumbers(b7.value)"
-              />
-              <input
-                type="button"
-                name="b8"
-                value="8"
-                onClick="calcNumbers(b8.value)"
-              />
-              <input
-                type="button"
-                name="b9"
-                value="9"
-                onClick="calcNumbers(b9.value)"
-              />
-              <input
-                id="operator"
-                type="button"
-                name="addb"
-                value="+"
-                onClick="calcNumbers(addb.value)"
-              />
-            </div>
+    <div class="container">
+      <h2>
+        Question1: Write a JavaScript Program to list the properties of a
+        object.
+      </h2>
+      <div class="question1">
+        <div id="question1-output"></div>
+        <button onclick="changeData()">Change Data</button>
+      </div>
 
-            <div class="row">
-              <input
-                type="button"
-                name="b4"
-                value="4"
-                onClick="calcNumbers(b4.value)"
-              />
-              <input
-                type="button"
-                name="b5"
-                value="5"
-                onClick="calcNumbers(b5.value)"
-              />
-              <input
-                type="button"
-                name="b6"
-                value="6"
-                onClick="calcNumbers(b6.value)"
-              />
-              <input
-                id="operator"
-                type="button"
-                name="subb"
-                value="-"
-                onClick="calcNumbers(subb.value)"
-              />
-            </div>
+      <h2>Question: JavaScript Program to Delete Object Property.</h2>
+      <div class="question2">
+        <table>
+          <tr>
+            <td>
+              <span class="info">Student Name: </span><span id="name"></span>
+            </td>
+            <td>
+              <button id="button0" onclick="deleteProp(0)">Delete Name</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="info">Student Class: </span><span id="class"></span>
+            </td>
+            <td>
+              <button id="button1" onclick="deleteProp(1)">Delete Class</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="info">Student Rollno: </span
+              ><span id="rollno"></span>
+            </td>
+            <td>
+              <button id="button2" onclick="deleteProp(2)">
+                Delete Rollno
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-            <div class="row">
-              <input
-                type="button"
-                name="b1"
-                value="1"
-                onClick="calcNumbers(b1.value)"
-              />
-              <input
-                type="button"
-                name="b2"
-                value="2"
-                onClick="calcNumbers(b2.value)"
-              />
-              <input
-                type="button"
-                name="b3"
-                value="3"
-                onClick="calcNumbers(b3.value)"
-              />
-              <input
-                id="operator"
-                type="button"
-                name="mulb"
-                value="*"
-                onClick="calcNumbers(mulb.value)"
-              />
-            </div>
-
-            <div class="row">
-              <input
-                type="button"
-                name="b0"
-                value="0"
-                onClick="calcNumbers(b0.value)"
-              />
-              <input
-                type="button"
-                name="potb"
-                value="."
-                onClick="calcNumbers(potb.value)"
-              />
-              <input
-                type="button"
-                id="operator"
-                name="divb"
-                value="/"
-                onClick="calcNumbers(divb.value)"
-              />
-              <input
-                type="button"
-                id="operator"
-                value="C"
-                onClick="clearInput()"
-              />
-            </div>
-
-            <div class="row">
-              <input
-                id="equal"
-                style="width: 98%"
-                type="button"
-                value="="
-                onClick="calResult()"
-              />
-            </div>
-          </div>
-        </form>
+      <h2>Question: Program to display reading status of Books.</h2>
+      <div class="question3">
+        <div id="display"></div>
       </div>
     </div>
 
     <script>
-      function calcNumbers(result) {
-        form.displayResult.value = form.displayResult.value + result;
-        if (form.displayResult.value.length > 8) {
-          document.querySelector(".display input").style.fontSize = "25px";
-        } else {
-          document.querySelector(".display input").style.fontSize = "60px";
-        }
-      }
+      var student = {
+        name: "David Rayy",
+        sclass: "V1",
+        rollno: 12,
+      };
+      var student2 = {
+        name: "David Rayy",
+        sclass: "V1",
+        rollno: 12,
+      };
+      var library = [
+        {
+          author: "Bill Gates",
+          title: "The Road Ahead",
+          readingStatus: true,
+        },
+        {
+          author: "Steve Jobs",
+          title: "Walter Isaacson",
+          readingStatus: true,
+        },
+        {
+          author: "Suzanne Collins",
+          title: "Mockingjay: The Final Book of The Hunger Games",
+          readingStatus: false,
+        },
+      ];
+      question1String = `Student Name: ${student.name} <br><br>Student Class: ${student.sclass} <br><br>Student Rollno: ${student.rollno}`;
+      document.getElementById("question1-output").innerHTML = question1String;
 
-      function clearInput() {
-        form.displayResult.value = "";
-        document.querySelector(".display input").style.fontSize = "60px";
+      function changeData() {
+        student.name = prompt("Enter Name of Student: ");
+        student.sclass = prompt("Enter Class of Student: ");
+        student.rollno = prompt("Enter Rollno of Student: ");
+        question1String = `Student Name: ${student.name} <br><br>Student Class: ${student.sclass} <br><br>Student Rollno: ${student.rollno}`;
+        document.getElementById("question1-output").innerHTML = question1String;
       }
-
-      function calResult() {
-        if (form.displayResult.value == "") {
-          alert("Cannot Compute for Emply Input!");
-          return;
-        }
-        var result = eval(form.displayResult.value);
-        if (!result && result != "0") {
-          alert("Invalid Input! Cannot Compute Result!");
-          return;
-        }
-        form.displayResult.value = result;
-        if (form.displayResult.value.length > 8) {
-          document.querySelector(".display input").style.fontSize = "25px";
+      function displayQuestion2() {
+        document.getElementById("name").innerHTML = student2.name;
+        document.getElementById("class").innerHTML = student2.sclass;
+        document.getElementById("rollno").innerHTML = student2.rollno;
+      }
+      function deleteProp(num) {
+        if (num == 0) {
+          delete student2.name;
+        } else if (num == 1) {
+          delete student2.sclass;
         } else {
-          document.querySelector(".display input").style.fontSize = "60px";
+          delete student2.rollno;
         }
+        displayQuestion2();
+        document.getElementById(`button${num}`).style.display = "none";
       }
+      function question3() {
+        var string = "";
+        for (var i = 0; i < library.length; i++) {
+          if (library[i].readingStatus) {
+            string += `<p>You have already read <b class="special">"${library[i].title}"</b> by <b class="special">${library[i].author}</b>.</p>`;
+          } else {
+            string += `<p>You have not read <b class="special">"${library[i].title}"</b> by <b class="special">${library[i].author}</b>.</p>`;
+          }
+        }
+        document.getElementById("display").innerHTML = string;
+      }
+      displayQuestion2();
+      question3();
     </script>
   </body>
 </html>
